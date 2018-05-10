@@ -1,4 +1,5 @@
-<!-- ./src/pages/Cart.vue -->
+<!-- ./src/pages/Cart.vue https://travishorn.com/interactive-maps-with-vue-leaflet-5430527353c8 -->
+
 <template>
   <div>
     <div class="title">
@@ -12,7 +13,7 @@
     name: 'home',
     data () {
       return {
-        msg: 'Welcome to the Cart Page'
+        msg: 'Welcome to the Map Page'
       }
     }
   }

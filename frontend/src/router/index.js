@@ -2,7 +2,7 @@
 // import Vue from 'vue';
 // import Router from 'vue-router';
 import Home from '@/pages/Home';
-import Cart from '@/pages/Cart';
+import Map from '@/pages/Map';
 // Admin Components
 import Index from '@/pages/admin/Index'
 import New from '@/pages/admin/New'
@@ -16,9 +16,9 @@ export const routes = [{
   component: Home,
   children: [],
 }, {
-  path: '/cart',
-  name: 'Cart',
-  component: Cart,
+  path: '/Map',
+  name: 'Map',
+  component: Map,
 }, {
   path: '/admin',
   name: 'Admin',
