@@ -39,6 +39,8 @@ export default {
 }
 
 @import url('https://fonts.googleapis.com/css?family=PT+Sans|Raleway');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css');
+@import url('https://unpkg.com/leaflet@1.2.0/dist/leaflet.css');
 
 html, body {
   height: 100%;
