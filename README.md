@@ -1,6 +1,6 @@
 # Django Quickstart
 
-## Create the project
+## Backend
 - In the root file create: *Dockerfile, requirements.txt, docker-compose.yml*
 
 * Build the image
@@ -27,6 +27,10 @@ or
 * Create superuser: *python manage.py createsuperuser*
 
 * Create an app: *python manage.py startapp app-project*
+
+## Frontend
+
+* Run: *docker-compose run frontend npm install*
 
 ## Redo the project
 - To erase what you've done so far:
