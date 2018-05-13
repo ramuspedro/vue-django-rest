@@ -11,6 +11,20 @@ services:
       - ./backend:/code
     ports:
       - "8000:8000"
+  postgres:
+    container_name: django-postgres
+    image: mdillon/postgis:9.5
+    ports:
+      - '5434:5432'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=postgres
+  pgadmin:
+    container_name: django-pgadmin
+    image: thajeztah/pgadmin4
+    ports:
+      - '5050:5050'
   frontend:
     container_name: vue-frontend
     build:
