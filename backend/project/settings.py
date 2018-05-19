@@ -37,13 +37,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites', # new!
     'rest_framework',
     'rest_framework.authtoken', # new!
     'rest_auth', # new!
+    'rest_auth.registration', #new!
+    'allauth', #new!
+    'allauth.account', #new!
     'api',
     'leads',
     'users'
 ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+SITE_ID = 1
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
