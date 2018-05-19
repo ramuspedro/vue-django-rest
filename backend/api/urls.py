@@ -6,5 +6,6 @@ from . import views
 urlpatterns = [
     path('lead/', views.ListLead.as_view()),
     path('lead/<int:pk>/', views.DetailLead.as_view()),
-    path('lead/rest-auth/', include('rest_auth.urls')),
+    path('users/', include('users.urls')),
+    path('rest-auth/', include('rest_auth.urls')),
 ]
