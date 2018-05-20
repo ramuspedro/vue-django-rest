@@ -9,12 +9,19 @@ import New from '@/pages/admin/New'
 import Products from '@/pages/admin/Products'
 import Edit from '@/pages/admin/Edit'
 
+// authentication
+import UserAuth from '@/pages/UserAuth'
+
 // Vue.use(Router);
 
 export const routes = [{
   path: '/',
   component: Home,
   children: [],
+}, {
+  path: '/auth',
+  name: 'UserAuth',
+  component: UserAuth,
 }, {
   path: '/Map',
   name: 'Map',
