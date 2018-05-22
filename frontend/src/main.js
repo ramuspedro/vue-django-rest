@@ -14,6 +14,17 @@ const router = new Router({
   mode: 'history',
 });
 
+// access control
+router.beforeEach((to, from, next) => {
+  console.log("ROUTE", to);
+  
+  if(sessionStorage.getItem('authToken') !== null || to.path === '/auth') {
+    next()
+  } else {
+    next('/auth')
+  }
+})
+
 new Vue({
   router,
   render: h => h(App)
