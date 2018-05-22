@@ -44,3 +44,17 @@ $ docker rmi image_id --force
 
 $ sudo rm -R manage.py project
 ```
+
+## Problems
+
+```
+# Migration problem
+# https://stackoverflow.com/questions/44651760/django-db-migrations-exceptions-inconsistentmigrationhistory
+
+in your Installed_Apps settings. Then run
+
+python manage.py migrate.
+When done uncomment
+
+‘django.contrib.admin’.
+```

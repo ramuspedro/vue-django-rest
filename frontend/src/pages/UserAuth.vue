@@ -69,7 +69,7 @@
     },
     methods: {
       signUp() {
-        $.post('http://localhost:8000/auth/users/create/', this.$data, (data) => {
+        $.post('http://localhost:3000/auth/users/create/', this.$data, (data) => {
             alert("Your account has been created. You will be signed in automatically")
             this.signIn()
           })
@@ -86,7 +86,7 @@
 
         console.log("TESTE: ", credentials);
         
-        fetch('http://localhost:8000/auth/token/create/', {
+        fetch('http://localhost:3000/auth/token/create/', {
           method: 'POST',
           headers: new Headers(),
           body: JSON.stringify(credentials)
