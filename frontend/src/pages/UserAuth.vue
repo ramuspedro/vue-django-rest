@@ -49,7 +49,7 @@
               </div>
               <button type="submit" class="btn btn-block btn-primary">Sign up</button>
             </form>
-          </div>          
+          </div>
         </div>
       </div>
     </div>
@@ -60,13 +60,51 @@
   const $ = window.jQuery // JQuery
 
   export default {
-
-    data () {
+    data() {
       return {
-        email: '', username: '', password: ''
+        email: '',
+        username: '',
+        password: ''
+      }
+    },
+    methods: {
+      signUp() {
+        $.post('http://localhost:8000/auth/users/create/', this.$data, (data) => {
+            alert("Your account has been created. You will be signed in automatically")
+            this.signIn()
+          })
+          .fail((response) => {
+            alert(response.responseText)
+          })
+      },
+
+      signIn() {
+        const credentials = {
+          username: this.username,
+          password: this.password
+        }
+
+        console.log("TESTE: ", credentials);
+        
+        fetch('http://localhost:8000/auth/token/create/', {
+          method: 'POST',
+          headers: new Headers(),
+          body: JSON.stringify(credentials)
+        }).then((res) => res.json())
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err)
+        )
+
+        // $.post('http://localhost:8000/auth/token/create/', credentials, (data) => {
+        //     sessionStorage.setItem('authToken', data.auth_token)
+        //     sessionStorage.setItem('username', this.username)
+        //     this.$router.push('/chats')
+        //   })
+        //   .fail((response) => {
+        //     alert(response.responseText)
+        //   })
       }
     }
-
   }
 </script>
 
