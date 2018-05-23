@@ -81,15 +81,20 @@
       signIn() {
         const credentials = {
           username: this.username,
-          password: this.password
+          password: this.password,
+          email: 'admin@example.com'
         }
 
         console.log("TESTE: ", credentials);
+
+        let headers = new Headers()
+
+        headers['Accept'] = 'application/json'
         
-        fetch('http://localhost:3000/auth/token/create/', {
+        fetch('http://localhost:8000/api/v1/rest-auth/login/', {
           method: 'POST',
           headers: new Headers(),
-          body: JSON.stringify(credentials)
+          body: credentials
         }).then((res) => res.json())
         .then((data) => console.log(data))
         .catch((err) => console.log(err)

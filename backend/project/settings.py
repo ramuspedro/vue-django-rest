@@ -38,12 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites', # new!
-    'rest_framework',
+    'rest_framework', # new!
     'rest_framework.authtoken', # new!
     'rest_auth', # new!
     'rest_auth.registration', #new!
     'allauth', #new!
     'allauth.account', #new!
+    'corsheaders', # new!
+
     'api',
     'leads',
     'users'
@@ -58,12 +60,15 @@ AUTH_USER_MODEL = 'users.CustomUser'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware', # new!
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True # just for development
 
 ROOT_URLCONF = 'project.urls'
 
