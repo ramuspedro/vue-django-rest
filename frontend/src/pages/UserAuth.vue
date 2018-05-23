@@ -17,7 +17,7 @@
           <div class="tab-pane fade show active" id="signin" role="tabpanel" aria-labelledby="signin-tab">
             <form @submit.prevent="signIn">
               <div class="form-group">
-                <input v-model="username" type="text" class="form-control" id="login-username" placeholder="Username" required>
+                <input v-model="email" type="text" class="form-control" id="login-email" placeholder="Email" required>
               </div>
               <div class="form-group">
                 <input v-model="password" type="password" class="form-control" id="login-password" placeholder="Password" required>
@@ -69,7 +69,7 @@
     },
     methods: {
       signUp() {
-        $.post('http://localhost:3000/auth/users/create/', this.$data, (data) => {
+        $.post('http://localhost:8000/auth/users/create/', this.$data, (data) => {
             alert("Your account has been created. You will be signed in automatically")
             this.signIn()
           })
@@ -80,22 +80,21 @@
 
       signIn() {
         const credentials = {
-          username: this.username,
-          password: this.password,
-          email: 'admin@example.com'
+          email: this.email,
+          password: this.password
         }
 
         console.log("TESTE: ", credentials);
 
         let headers = new Headers()
 
-        headers['Accept'] = 'application/json'
+        headers['Content-Type'] = 'application/json'
         
         fetch('http://localhost:8000/api/v1/rest-auth/login/', {
           method: 'POST',
-          headers: new Headers(),
+          // headers: new Headers(),
           body: credentials
-        }).then((res) => res.json())
+        }).then((res) => {return res.json()})
         .then((data) => console.log(data))
         .catch((err) => console.log(err)
         )
