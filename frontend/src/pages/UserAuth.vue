@@ -17,7 +17,7 @@
           <div class="tab-pane fade show active" id="signin" role="tabpanel" aria-labelledby="signin-tab">
             <form @submit.prevent="signIn">
               <div class="form-group">
-                <input v-model="email" type="text" class="form-control" id="login-email" placeholder="Email" required>
+                <input v-model="username" type="text" class="form-control" id="login-username" placeholder="Username" required>
               </div>
               <div class="form-group">
                 <input v-model="password" type="password" class="form-control" id="login-password" placeholder="Password" required>
@@ -80,7 +80,7 @@
 
       signIn() {
         const credentials = {
-          email: this.email,
+          username: this.username,
           password: this.password
         }
 
@@ -89,15 +89,20 @@
         let headers = new Headers()
 
         headers['Content-Type'] = 'application/json'
-        
+
         fetch('http://localhost:8000/api/v1/rest-auth/login/', {
-          method: 'POST',
-          // headers: new Headers(),
-          body: credentials
-        }).then((res) => {return res.json()})
-        .then((data) => console.log(data))
-        .catch((err) => console.log(err)
-        )
+            method: 'POST',
+            // headers: new Headers(),
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(credentials)
+          }).then((res) => {
+            return res.json()
+          })
+          .then((data) => console.log(data))
+          .catch((err) => console.log(err))
 
         // $.post('http://localhost:8000/auth/token/create/', credentials, (data) => {
         //     sessionStorage.setItem('authToken', data.auth_token)
