@@ -101,17 +101,13 @@
           }).then((res) => {
             return res.json()
           })
-          .then((data) => console.log(data))
+          .then((data) => {
+            sessionStorage.setItem('authToken', data.key)
+            sessionStorage.setItem('username', this.username)
+            console.log("authentication: ", data)
+            this.$router.push('/map')
+          })
           .catch((err) => console.log(err))
-
-        // $.post('http://localhost:8000/auth/token/create/', credentials, (data) => {
-        //     sessionStorage.setItem('authToken', data.auth_token)
-        //     sessionStorage.setItem('username', this.username)
-        //     this.$router.push('/chats')
-        //   })
-        //   .fail((response) => {
-        //     alert(response.responseText)
-        //   })
       }
     }
   }

@@ -14,7 +14,10 @@
         </ul>
         <ul class="nav__right">
           <li>
-            <router-link to="/auth">Entrar</router-link>
+            <router-link to="/auth">Login</router-link>
+          </li>
+          <li>
+            <a href="">Logout</a>
           </li>
           <li>
             <router-link to="/admin">Admin</router-link>
