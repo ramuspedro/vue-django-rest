@@ -17,7 +17,7 @@
             <router-link to="/auth">Login</router-link>
           </li>
           <li>
-            <a href="">Logout</a>
+            <a href="" v-on:click="logout">Logout</a>
           </li>
           <li>
             <router-link to="/admin">Admin</router-link>
@@ -37,6 +37,14 @@
     name: 'app',
     components: {
       HelloWorld
+    },
+    methods: {
+      logout: function (event) {
+        event.preventDefault();
+        console.log("TESE", localStorage.getItem('authToken'));
+        localStorage.removeItem('authToken')
+        this.$router.push('/auth')      
+      }
     }
   }
 </script>

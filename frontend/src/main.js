@@ -18,7 +18,7 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
   console.log("ROUTE", to);
   
-  if(sessionStorage.getItem('authToken') !== null || to.path === '/auth') {
+  if (localStorage.getItem('authToken') !== null || to.path === '/auth') {
     next()
   } else {
     next('/auth')

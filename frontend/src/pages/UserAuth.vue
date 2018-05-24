@@ -102,8 +102,8 @@
             return res.json()
           })
           .then((data) => {
-            sessionStorage.setItem('authToken', data.key)
-            sessionStorage.setItem('username', this.username)
+            localStorage.setItem('authToken', data.key)
+            localStorage.setItem('username', this.username)
             console.log("authentication: ", data)
             this.$router.push('/map')
           })
