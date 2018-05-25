@@ -14,10 +14,8 @@
         </ul>
         <ul class="nav__right">
           <li>
-            <router-link to="/auth">Login</router-link>
-          </li>
-          <li>
-            <a href="" v-on:click="logout">Logout</a>
+            <a href="" v-on:click="logout" v-if="token">Logout</a>
+            <router-link to="/auth" v-else>Login</router-link>
           </li>
           <li>
             <router-link to="/admin">Admin</router-link>
@@ -35,15 +33,27 @@
 
   export default {
     name: 'app',
+    data() {
+      return {
+        token: localStorage.getItem('authToken')
+      }
+    },
     components: {
       HelloWorld
     },
     methods: {
       logout: function (event) {
         event.preventDefault();
-        console.log("TESE", localStorage.getItem('authToken'));
+        console.log("TOKEN", this.token);
         localStorage.removeItem('authToken')
         this.$router.push('/auth')      
+      }
+    },
+    watch: {
+      $route (to, from){
+        console.log("TESTEEEEEEE");
+        this.token = localStorage.getItem('authToken')
+        
       }
     }
   }

@@ -104,7 +104,7 @@
           .then((data) => {
             localStorage.setItem('authToken', data.key)
             localStorage.setItem('username', this.username)
-            console.log("authentication: ", data)
+            // this.$root.token = data.key
             this.$router.push('/map')
           })
           .catch((err) => console.log(err))

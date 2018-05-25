@@ -18,6 +18,7 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
   console.log("ROUTE", to);
   
+  // caso haja o token
   if (localStorage.getItem('authToken') !== null || to.path === '/auth') {
     next()
   } else {
