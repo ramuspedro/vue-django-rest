@@ -32,11 +32,14 @@
                 <input v-model="email" type="email" class="form-control" id="email" placeholder="Email Address" required>
               </div>
               <div class="form-row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-12">
                   <input v-model="username" type="text" class="form-control" id="username" placeholder="Username" required>
                 </div>
                 <div class="form-group col-md-6">
-                  <input v-model="password" type="password" class="form-control" id="password" placeholder="Password" required>
+                  <input v-model="password1" type="password" class="form-control" id="password1" placeholder="Password" required>
+                </div>
+                <div class="form-group col-md-6">
+                  <input v-model="password2" type="password" class="form-control" id="password2" placeholder="Confirm password" required>
                 </div>
               </div>
               <div class="form-group">

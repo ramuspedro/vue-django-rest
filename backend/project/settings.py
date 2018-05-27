@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
     'api',
     'leads',
+    'chat',
     'users'
 ]
 
