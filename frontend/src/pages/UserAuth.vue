@@ -60,18 +60,42 @@
 </template>
 
 <script>
-  const $ = window.jQuery // JQuery
-
   export default {
     data() {
       return {
         email: '',
         username: '',
-        password: ''
+        password: '',
+        password1: '',
+        password2: ''
       }
     },
     methods: {
       signUp() {
+        const newUser = {
+          username: this.username,
+          email: this.email,
+          password1: this.password1,
+          password2: this.password2
+        }
+
+        console.log("Novo usuário: ", newUser);
+
+        fetch('http://localhost:8000/api/v1/rest-auth/registration/', {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newUser)
+          }).then((res) => {
+            return res.json()
+          })
+          .then((data) => {
+            console.log("DATA", data)
+            
+          })
+          .catch((err) => console.log(err))
         // $.post('http://localhost:8000/auth/users/create/', this.$data, (data) => {
         //     alert("Your account has been created. You will be signed in automatically")
         //     this.signIn()

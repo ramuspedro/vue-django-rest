@@ -41,12 +41,15 @@
     components: {
       HelloWorld
     },
+    mounted() {
+      /* eslint-disable */
+    },
     methods: {
       logout: function (event) {
         event.preventDefault();
         console.log("TOKEN", this.token);
         localStorage.removeItem('authToken')
-        this.$router.push('/auth')      
+        this.$router.push('/auth')  
       }
     },
     watch: {
