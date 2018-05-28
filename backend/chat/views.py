@@ -12,7 +12,20 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import permissions
 
-class ChatSessionView(APIView):
+from rest_framework import generics
+
+from chat.serializers import ChatSessionSerializer
+from chat.serializers import ChatSessionMessageSerializer
+
+class ChatSessionView(generics.ListCreateAPIView):
+  queryset = ChatSession.objects.all()
+  serializer_class = ChatSessionSerializer
+
+class ChatSessionMessageView(generics.ListCreateAPIView):
+  queryset = ChatSessionMessage.objects.all()
+  serializer_class = ChatSessionMessageSerializer
+
+class ChatSessionViewTest(APIView):
   """"Menage Chat sessions."""
 
   permission_classes = (permissions.IsAuthenticated,)
@@ -65,7 +78,7 @@ class ChatSessionView(APIView):
       'user': deserialize_user(user)
     })
 
-class ChatSessionMessageView(APIView):
+class ChatSessionMessageViewTest(APIView):
   """"Create/Get Chat session messages."""
 
   permission_classes = (permissions.IsAuthenticated)
