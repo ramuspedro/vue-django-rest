@@ -2,7 +2,7 @@
   <div class="container">
     <h1 class="text-center">Welcome to the Project!</h1>
     <div id="auth-container" class="row">
-      <div class="col-sm-4 offset-sm-4">
+      <div class="col-sm-6 offset-sm-3">
         <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
           <li class="nav-item">
             <a class="nav-link active" id="signup-tab" data-toggle="tab" href="#signin" role="tab" aria-controls="signin" aria-selected="true">Login</a>
