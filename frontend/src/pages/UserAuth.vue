@@ -93,6 +93,10 @@
           })
           .then((data) => {
             console.log("DATA", data)
+            if(data.key) {
+              this.password = this.password1
+              this.signIn()
+            }
             
           })
           .catch((err) => console.log("ERROOOOO", err))
