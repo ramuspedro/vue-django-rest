@@ -95,7 +95,7 @@
             console.log("DATA", data)
             
           })
-          .catch((err) => console.log(err))
+          .catch((err) => console.log("ERROOOOO", err))
         // $.post('http://localhost:8000/auth/users/create/', this.$data, (data) => {
         //     alert("Your account has been created. You will be signed in automatically")
         //     this.signIn()

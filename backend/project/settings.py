@@ -52,8 +52,9 @@ INSTALLED_APPS = [
     'users'
 ]
 
+# https://stackoverflow.com/questions/30783472/django-rest-auth-angular-500-internal-error
 #This is required otherwise it asks for email server
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # ACCOUNT_EMAIL_REQUIRED = True
 # AUTHENTICATION_METHOD = 'EMAIL'
