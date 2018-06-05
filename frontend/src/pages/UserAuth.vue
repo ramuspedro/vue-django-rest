@@ -133,6 +133,8 @@
             return res.json()
           })
           .then((data) => {
+            console.log("DATAAAAA:", data);
+            
             localStorage.setItem('authToken', data.key)
             localStorage.setItem('username', this.username)
             // this.$root.token = data.key
