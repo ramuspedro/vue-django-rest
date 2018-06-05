@@ -133,7 +133,7 @@
           'Authorization': "Token " + localStorage.getItem('authToken')
         }
 
-        fetch('http://localhost:8000/api/v1/chats', {
+        fetch('http://localhost:8000/api/v1/chats/', {
           method: 'POST',
           headers: headers
         }).then((res) => {
