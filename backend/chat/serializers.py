@@ -6,7 +6,6 @@ class ChatSessionSerializer(serializers.ModelSerializer):
   class Meta:
     model = ChatSession
     fields = '__all__'
-    
 
 class ChatSessionMessageSerializer(serializers.ModelSerializer):
   class Meta:

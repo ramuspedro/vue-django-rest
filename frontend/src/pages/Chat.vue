@@ -132,9 +132,11 @@
           'Content-Type': 'application/json',
           'Authorization': "Token " + localStorage.getItem('authToken')
         }
+        console.log("HEADERS: ", headers);
+        
 
         fetch('http://localhost:8000/api/v1/chats/', {
-          method: 'POST',
+          method: 'GET',
           headers: headers
         }).then((res) => {
           return res.json()

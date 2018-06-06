@@ -20,6 +20,10 @@ from chat.serializers import ChatSessionMessageSerializer
 class ChatSessionView(generics.ListCreateAPIView):
   queryset = ChatSession.objects.all()
   serializer_class = ChatSessionSerializer
+  permission_classes = (permissions.IsAuthenticated,)
+
+  def perform_create(self, serializer): # new
+    serializer.save(owner=self.request.user)
 
 class ChatSessionMessageView(generics.ListCreateAPIView):
   queryset = ChatSessionMessage.objects.all()
