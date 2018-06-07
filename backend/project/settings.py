@@ -110,6 +110,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'project.wsgi.application'
 
+# https://stackoverflow.com/questions/26906630/django-rest-framework-authentication-credentials-were-not-provided
+REST_FRAMEWORK = {
+   'DEFAULT_AUTHENTICATION_CLASSES': (
+       'rest_framework.authentication.TokenAuthentication',
+   ),
+   'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAdminUser'
+   ),
+}
+
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
