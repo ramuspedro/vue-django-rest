@@ -2,7 +2,7 @@ from rest_framework import serializers
 from chat.models import ChatSession
 from chat.models import ChatSessionMessage
 
-class ChatSessionSerializer(serializers.ModelSerializer):
+class ChatSessionSerializer(serializers.ModelSerializer):  
   class Meta:
     model = ChatSession
     fields = '__all__'

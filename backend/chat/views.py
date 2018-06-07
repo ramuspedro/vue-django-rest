@@ -22,8 +22,20 @@ class ChatSessionView(generics.ListCreateAPIView):
   queryset = ChatSession.objects.all()
   serializer_class = ChatSessionSerializer
 
-  def perform_create(self, serializer): # new
-    serializer.save(owner=self.request.user)
+  # def perform_create(self, serializer): # new
+    # serializer.save(owner=serializer.object.get('user'))
+
+  def get(self, request, *args, **kwargs):
+    """Create a new chat session"""    
+    user = request.user
+
+    chat_session = ChatSession.objects.create(owner = user)
+
+    return Response({
+      'status': 'SUCCESS',
+      'uri': chat_session.uri,
+      'message': 'New chat session created'
+    })
 
 class ChatSessionMessageView(generics.ListCreateAPIView):
   queryset = ChatSessionMessage.objects.all()
