@@ -142,7 +142,9 @@
           return res.json()
         }).then((data) => {
           console.log("DATAAAA: ", data);
-
+          alert("A new session has been created you'll be redirected automatically")
+          this.sessionStarted = true
+          this.$router.push(`/chats/${data.uri}/`)
         }).catch((err) => console.log('err:', err))
       }
     }
