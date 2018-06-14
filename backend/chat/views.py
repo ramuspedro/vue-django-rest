@@ -36,6 +36,43 @@ class ChatSessionView(generics.ListCreateAPIView):
       'uri': chat_session.uri,
       'message': 'New chat session created'
     })
+  
+  def patch(self, resquest, *args, **kwargs):
+    """Add user to a chat session"""
+
+    print("OKKKKK")
+
+    User = get_user_model()
+
+    uri = kwargs['uri']
+    username = resquest.data['username']
+    user = User.objects.get(username = username)
+
+    chat_session = ChatSession.objects.get(uri = uri)
+
+    owner = chat_session.owner
+
+    if owner != user: # Only allow non owners join the room
+      chat_session.members.get_or_create(
+        user = user,
+        chat_session = chat_session
+      )
+    
+    owner = deserialize_user(owner)
+
+    members = [
+      deserialize_user(chat_session.user)
+      for chat_session in chat_session.members.all()
+    ]
+
+    members.insert(0, owner) # Make the owner the first member
+
+    return Response({
+      'status': 'SUCESS',
+      'members': members,
+      'message': '%s joined that chat' % user.username,
+      'user': deserialize_user(user)
+    })
 
 class ChatSessionMessageView(generics.ListCreateAPIView):
   queryset = ChatSessionMessage.objects.all()

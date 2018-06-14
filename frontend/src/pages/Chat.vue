@@ -63,13 +63,13 @@
           </div>
 
           <div class="card-footer text-muted">
-            <form>
+            <form @submit.prevent="getChatMessages">
               <div class="row">
                 <div class="col-sm-10">
                   <input type="text" placeholder="Type a message" />
                 </div>
                 <div class="col-sm-2">
-                  <button class="btn btn-primary">Send</button>
+                  <button class="btn btn-primary" type="submit">Send</button>
                 </div>
               </div>
             </form>
@@ -107,17 +107,18 @@
     },
 
     created() {
-      this.username = localStorage.getItem('username')
+      this.sessionStarted = true
+      // this.username = localStorage.getItem('username')
 
-      console.log("username", localStorage.getItem('username'))
+      // console.log("username", localStorage.getItem('username'))
 
-      let headers = {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': "Token " + localStorage.getItem('authToken')
-      }
+      // let headers = {
+      //   'Accept': 'application/json',
+      //   'Content-Type': 'application/json',
+      //   'Authorization': "Token " + localStorage.getItem('authToken')
+      // }
 
-      console.log("header", headers)
+      // console.log("header", headers)
 
 
     },
@@ -145,6 +146,24 @@
           alert("A new session has been created you'll be redirected automatically")
           this.sessionStarted = true
           this.$router.push(`/chats/${data.uri}/`)
+        }).catch((err) => console.log('err:', err))
+      },
+      getChatMessages() {
+        console.log("TESTEEEEE")
+
+        let headers = {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': "Token " + localStorage.getItem('authToken')
+        }
+
+        fetch('http://localhost:8000/api/v1/chats/c209293de8594ca/', {
+          method: 'patch',
+          headers: headers
+        }).then((res) => {
+          return res.json()
+        }).then((data) => {
+          console.log("DATAAAA: ", data);
         }).catch((err) => console.log('err:', err))
       }
     }
