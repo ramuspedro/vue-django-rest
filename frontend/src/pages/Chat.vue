@@ -159,7 +159,10 @@
 
         fetch('http://localhost:8000/api/v1/chats/c209293de8594ca/', {
           method: 'patch',
-          headers: headers
+          headers: headers,
+          body: JSON.stringify({
+            username: localStorage.getItem('username')
+          })
         }).then((res) => {
           return res.json()
         }).then((data) => {

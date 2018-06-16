@@ -93,11 +93,11 @@
           })
           .then((data) => {
             console.log("DATA", data)
-            if(data.key) {
+            if (data.key) {
               this.password = this.password1
               this.signIn()
             }
-            
+
           })
           .catch((err) => console.log("ERROOOOO", err))
         // $.post('http://localhost:8000/auth/users/create/', this.$data, (data) => {
@@ -134,11 +134,15 @@
           })
           .then((data) => {
             console.log("DATAAAAA:", data);
-            
-            localStorage.setItem('authToken', data.key)
-            localStorage.setItem('username', this.username)
-            // this.$root.token = data.key
-            this.$router.push('/map')
+
+            if (data.key) {
+              localStorage.setItem('authToken', data.key)
+              localStorage.setItem('username', this.username)
+              // this.$root.token = data.key
+              this.$router.push('/map')
+            } else {
+              alert("Login incorreto")
+            }
           })
           .catch((err) => console.log(err))
       }

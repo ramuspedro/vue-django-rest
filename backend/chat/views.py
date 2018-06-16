@@ -40,13 +40,20 @@ class ChatSessionView(generics.ListCreateAPIView):
   def patch(self, resquest, *args, **kwargs):
     """Add user to a chat session"""
 
-    print("OKKKKK")
+    print("************************")
+    print("username:")
+
+    print(resquest.data['username'])
 
     User = get_user_model()
 
     uri = kwargs['uri']
     username = resquest.data['username']
     user = User.objects.get(username = username)
+
+    print("************************")
+    print("user:")
+    print(user)
 
     chat_session = ChatSession.objects.get(uri = uri)
 
