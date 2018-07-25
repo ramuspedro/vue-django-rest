@@ -48,7 +48,7 @@ class ChatSessionView(generics.ListCreateAPIView):
     User = get_user_model()
 
     uri = kwargs['uri']
-    username = resquest.data['username']
+    username = request.data['username']
     user = User.objects.get(username = username)
 
     print("************************")
