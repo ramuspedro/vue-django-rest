@@ -3,6 +3,7 @@
 // import Router from 'vue-router';
 import Home from '@/pages/Home';
 import Map from '@/pages/Map';
+import Chat from '@/pages/Chat';
 // Admin Components
 import Index from '@/pages/admin/Index'
 import New from '@/pages/admin/New'
@@ -26,7 +27,11 @@ export const routes = [{
   path: '/Map',
   name: 'Map',
   component: Map,
-}, {
+  }, {
+    path: '/chats/:uri?',
+    name: 'Chat',
+    component: Chat,
+  },{
   path: '/admin',
   name: 'Admin',
   // Parent routes still has a component

@@ -239,6 +239,7 @@
       }
     },
     mounted() {
+      /* eslint-disable */
       this.initMap();
       this.initLayers();
     },

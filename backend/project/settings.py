@@ -48,11 +48,13 @@ INSTALLED_APPS = [
 
     'api',
     'leads',
+    'chat',
     'users'
 ]
 
+# https://stackoverflow.com/questions/30783472/django-rest-auth-angular-500-internal-error
 #This is required otherwise it asks for email server
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # ACCOUNT_EMAIL_REQUIRED = True
 # AUTHENTICATION_METHOD = 'EMAIL'
@@ -107,6 +109,16 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'project.wsgi.application'
+
+# https://stackoverflow.com/questions/26906630/django-rest-framework-authentication-credentials-were-not-provided
+REST_FRAMEWORK = {
+   'DEFAULT_AUTHENTICATION_CLASSES': (
+       'rest_framework.authentication.TokenAuthentication',
+   ),
+   'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAdminUser'
+   ),
+}
 
 
 # Database

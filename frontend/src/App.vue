@@ -11,6 +11,9 @@
           <li>
             <router-link to="/map">Map</router-link>
           </li>
+          <li>
+            <router-link to="/chats">Chat</router-link>
+          </li>
         </ul>
         <ul class="nav__right">
           <li>
@@ -41,12 +44,15 @@
     components: {
       HelloWorld
     },
+    mounted() {
+      /* eslint-disable */
+    },
     methods: {
       logout: function (event) {
         event.preventDefault();
         console.log("TOKEN", this.token);
         localStorage.removeItem('authToken')
-        this.$router.push('/auth')      
+        this.$router.push('/auth')  
       }
     },
     watch: {
@@ -92,6 +98,7 @@
     font-weight: 300;
     text-transform: uppercase;
     background: #333;
+    margin-bottom: 2rem;
   }
 
   nav .container {
